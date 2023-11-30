@@ -22,6 +22,13 @@ import { db, connectToDb } from './db.js'
 
 const port = 4000;
 const app = express();
+// Enable CORS for all routes
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
+  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+  res.header('Access-Control-Allow-Headers', 'Content-Type');
+  next();
+});
 app.use(express.json())
 
 app.get('/api/articles/:name', async (req, res) => {
@@ -51,7 +58,7 @@ app.put('/api/articles/:name/upvote', async (req, res) => {
     const article = await db.collection('articles').findOne({ name });
 
     if (article) {
-        res.send(`The ${name} article now has ${article.upvotes} upvotes!!!!`)
+        res.json(article)
     } else {
         res.send('That article doesn\'t exist');
     }
@@ -71,7 +78,7 @@ app.post('/api/articles/:name/comments', async (req, res) => {
     const article = await db.collection('articles').findOne( {name} );
     // More Robust
     if (article) {
-        res.send(article.comments)
+        res.json(article);
     } else {
         res.send('That article doesn\'t exist')
     }

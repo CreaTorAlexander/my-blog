@@ -11,25 +11,24 @@ import NotFoundPage from './pages/NotFoundPage';
 function App() {
   return (
     <BrowserRouter>
-    <div className="App">
       <NavBar />
-    {/* Rendering the actual page here */}
+      {/* Rendering the actual page here */}
       <body>
-        <div id="page-body">
-          <Routes>
-            <Route path="/" element={<HomePage />} /> 
-            <Route path="/about" element={<AboutPage />} />
-            <Route path="/articles" element={<ArticlesListPage />} />
-            <Route path="/articles/:articleId" element={<ArticlePage />} />
-            {/* Asterix to match everything else than the above */}
-            <Route path="*" element={<NotFoundPage />} />
-          </Routes>
+        <div className="App">
+          <div id="page-body">
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/about" element={<AboutPage />} />
+              <Route path="/articles" element={<ArticlesListPage />} />
+              <Route path="/articles/:articleId" element={<ArticlePage />} />
+              {/* Asterix to match everything else than the above */}
+              <Route path="*" element={<NotFoundPage />} />
+            </Routes>
+          </div>
         </div>
       </body>
-    </div>
     </BrowserRouter>
   );
 }
 
 export default App;
-
