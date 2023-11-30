@@ -20,3 +20,8 @@
 #### Learnings First Part
 - React Router
 - Modularity of components and how to reuse.
+
+#### Learnings Second Part
+- Shortcuts in package.json
+- You can define in scripts section 
+- ```"dev": "npx nodemon src/server.js",```
