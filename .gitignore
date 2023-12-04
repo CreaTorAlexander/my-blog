@@ -5,6 +5,7 @@
 /.pnp
 .pnp.js
 /my-blog-backend/node_modules
+/my-blog-backend/credentials.json
 
 # testing
 /coverage

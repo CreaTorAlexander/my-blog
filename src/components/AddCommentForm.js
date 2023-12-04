@@ -1,18 +1,23 @@
 import { useState } from 'react';
 import axios from 'axios';
-
+import useUser from '../hooks/useUser';
 // Pass the aguments down
 const AddCommentForm = ( {articleName, onArticleUpdated }) => {
     const [name, setName] = useState('');
     const [commentText, setCommentText ] = useState('');
+    const { user } = useUser();
     /* Two Way Binding */
 
     const addComment = async ({  }) => {
+        const token = user && await user.getIdToken();
+        const headers = token ? { authtoken: token } : {};
         const response = await axios.post(`http://localhost:4000/api/articles/${articleName}/comments`, 
         {
             postedBy: name,
             text: commentText,
-        })
+        }, {
+            headers,
+        });
         const updatedArticle = response.data;
         onArticleUpdated(updatedArticle)
         setName('')
@@ -22,6 +27,7 @@ const AddCommentForm = ( {articleName, onArticleUpdated }) => {
     return(
         <div id="add-comment-form">
             <h3>Add a Comment</h3>
+            {user && <p>You are posting as {user.email}</p>}
             <label>
                 Name:
                 <input 

@@ -37,6 +37,14 @@
 
 #### Learnings Part Four
 - React Hooks as useState -> hooks run whenever the component gets updated
+- React Hooks are functions that we can call that abstract state management for our components.
 - Axios
 - CORS Policy, Frontend and Backend on different ports, so we have to allow that they can talk to each other => Add a proxy in package.json to make them think they run on the same origin
 - After proxy setup no need for the full url
+
+
+#### Learnings Part Five
+- Set up User Authentication with Firebase
+- Custom Hooks
+- SignIn with Firebase Authentication
+- In the backend make sure, users only can upvote article ones different for backend then frontend
